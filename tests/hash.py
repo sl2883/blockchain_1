@@ -1,4 +1,5 @@
 import unittest
+
 from blockchain.util import sha256_2_string
 from blockchain.pow_block import PoWBlock
 from blockchain.transaction import Transaction, TransactionOutput

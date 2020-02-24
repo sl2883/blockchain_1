@@ -14,8 +14,12 @@ def sha256_2_string(string_to_hash):
 
     # (hint): feed binary data directly between the two SHA256 rounds
 
+    a = hashlib.sha256(string_to_hash.encode()).digest()
+    aa = hashlib.sha256(a)
+    aaa = aa.hexdigest()
+
     # Placeholder for (1a)
-    return hashlib.sha256(hashlib.sha256(string_to_hash)).hexdigest()
+    return aaa
 
 
 def encode_as_str(list_to_encode, sep="|"):

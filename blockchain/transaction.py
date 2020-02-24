@@ -33,6 +33,19 @@ class Transaction(persistent.Persistent):
         self.outputs = outputs
         self.hash = self.calculate_hash()
 
+    def get_total_output(self):
+        output_total = 0
+        for output in self.outputs:
+            output_total = output_total + output.amount
+
+        return output_total
+
+    def get_output_at(self, pos):
+        return self.outputs[pos].amount
+
+    def get_receiver_at(self, pos):
+        return self.outputs[pos].receiver
+
     def calculate_hash(self):
         """ Get the hash of the block header.
 

@@ -14,6 +14,7 @@ unittest.TextTestRunner(verbosity=2).run(suite)
 suite = unittest.TestLoader().loadTestsFromTestCase(WeightTest)
 unittest.TextTestRunner(verbosity=2).run(suite)
 
+
 # Test for (1a) - get_chain_ending_with
 suite = unittest.TestLoader().loadTestsFromTestCase(GetChainTest)
 unittest.TextTestRunner(verbosity=2).run(suite)
@@ -27,5 +28,5 @@ suite = unittest.TestLoader().loadTestsFromTestCase(PoATest)
 unittest.TextTestRunner(verbosity=2).run(suite)
 
 # Test for (1c) - calculate_merkle_root
-suite = unittest.TestLoader().loadTestsFromTestCase(MerkleRootTest)
-unittest.TextTestRunner(verbosity=2).run(suite)
+# suite = unittest.TestLoader().loadTestsFromTestCase(MerkleRootTest)
+# unittest.TextTestRunner(verbosity=2).run(suite)

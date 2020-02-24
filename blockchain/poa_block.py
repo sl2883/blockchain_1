@@ -4,7 +4,8 @@ from blockchain.block import Block
 import config
 import binascii
 import ecdsa
-from ecdsa import SigningKey, VerifyingKey
+from ecdsa import SigningKey, VerifyingKey, NIST384p, NIST192p
+
 
 class PoABlock(Block):
     """ Extends Block, adding proof-of-work primitives. """
@@ -48,6 +49,14 @@ class PoABlock(Block):
         # encode result as int and set using set_seal_data
         # make sure to check that output is valid seal with provided code
         # (if seal is invalid, repeat)
+        seal_valid = False
+
+        while not seal_valid:
+            sk = SigningKey.from_string(self.get_private_key(), curve=NIST192p)
+            vk = VerifyingKey.from_string(self.get_public_key(), curve=NIST192p)
+            signature = sk.sign(self.unsealed_header().encode('utf-8'))
+            self.set_seal_data(ecdsa.util.string_to_number(signature))
+            seal_valid = self.seal_is_valid()
 
         # Placeholder for (1b)
         return
